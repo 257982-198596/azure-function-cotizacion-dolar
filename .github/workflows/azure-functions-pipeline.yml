@@ -1,0 +1,32 @@
+name: Deploy Azure Function
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.0' 
+
+      - name: Build
+        run: dotnet build --configuration Release
+
+      - name: Publish to Azure
+        uses: Azure/functions-action@v1
+        with:
+          app-name: "proyecto-integrador-ATI-cotizacion-dolar"
+          package: "."
+          publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
+          env:
+            VITE_REACT_APP_API_URL: ${{ secrets.VITE_REACT_APP_API_URL }}
+            VITE_REACT_APP_API_KEY: ${{ secrets.VITE_REACT_APP_API_KEY }}
