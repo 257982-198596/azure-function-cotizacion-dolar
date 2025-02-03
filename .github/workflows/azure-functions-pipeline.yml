@@ -27,6 +27,6 @@ jobs:
           app-name: "proyecto-integrador-ATI-cotizacion-dolar"
           package: "."
           publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
-          env:
-            VITE_REACT_APP_API_URL: ${{ secrets.VITE_REACT_APP_API_URL }}
-            VITE_REACT_APP_API_KEY: ${{ secrets.VITE_REACT_APP_API_KEY }}
+        env:
+          VITE_REACT_APP_API_URL: ${{ secrets.VITE_REACT_APP_API_URL }}
+          VITE_REACT_APP_API_KEY: ${{ secrets.VITE_REACT_APP_API_KEY }}
