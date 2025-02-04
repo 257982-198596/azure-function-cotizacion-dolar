@@ -17,7 +17,7 @@ public class AZCotizaciones
     }
 
     [Function("PostToApi")]
-    public async Task Run([TimerTrigger("0 0 * * * *")] TimerInfo myTimer, FunctionContext context)
+    public async Task Run([TimerTrigger("0 0 0 * * *")] TimerInfo myTimer, FunctionContext context)
     {
         var logger = context.GetLogger("PostToApi");
         logger.LogInformation($"Funcion ejecutada: {DateTime.UtcNow}");
